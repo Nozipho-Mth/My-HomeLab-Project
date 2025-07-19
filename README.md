@@ -1,6 +1,6 @@
 # ☁️ Cloud HomeLab Setup (Amazon Free Tier)
 
-A hands-on guide of how I buildt and secured a home lab using AWS Free Tier with Amazon Linux, Ubuntu, and Windows VMs.
+A hands-on guide of how I built and secured a home lab using AWS Free Tier with Amazon Linux, Ubuntu, and Windows VMs.
 
 ---
 
