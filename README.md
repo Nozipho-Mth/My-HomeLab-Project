@@ -1,55 +1,46 @@
-# 🧪 My AWS HomeLab Setup: Linux, Ubuntu & Windows VMs
+# ☁️ Cloud HomeLab Setup (Amazon Free Tier)
 
-Welcome to my cloud-based HomeLab! This repo documents how I built and configured virtual machines (VMs) on AWS EC2 using Amazon Linux, Ubuntu, and Windows.
-
----
-
-## ☁️ Tools Used
-- AWS EC2
-- Amazon Console (GUI)
-- MobaXterm / Remote Desktop
-- SSH Keys
-- Git & GitHub
+A hands-on guide of how I buildt and secured a home lab using AWS Free Tier with Amazon Linux, Ubuntu, and Windows VMs.
 
 ---
 
-## 🐧 Amazon Linux VM Setup
+## 🔧 What's Included
 
-1. **Launch EC2 Instance**
-   - AMI: Amazon Linux 2023
-   - Type: `t3.micro` (Free Tier)
-   - Key Pair: `Myhomelapproject.pem`
+- ✅ Free-tier AWS account setup
+- 👤 IAM: Users, Groups, and Permissions (CIA-based)
+- 🔐 MFA configuration
+- 💸 Cost alarm setup to avoid surprise charges
+- 🧠 EC2: Deploying Amazon Linux, Ubuntu, and Windows
+- 💻 Working with MobaXterm
+- 🛠️ Tools installed: Nmap, Wireshark, Hydra
+- ⚠️ Importance of stopping unused instances
+- 🛡️ Security: MFA, least privilege, and alerts
 
-2. **Connect**
-   ```bash
-   ssh -i "Myhomelapproject.pem" ec2-user@<public-ip>
+---
 
-3. **Install Packages**
-  - sudo yum update -y
-  - sudo yum install httpd git -y
+## 📁 Directory Guide
 
-## 🐧 Ubuntu VM Setup
-1. **Launch EC2 Instance**
-  - AMI: Ubuntu 22.04 LTS
-  - Type: t3.micro (Free Tier)
-  - Key Pair: Myhomelapproject.pem
+- **`amazon-linux/`** – Step-by-step setup of Amazon Linux instance
+- **`ubuntu/`** – Ubuntu instance and Hydra usage
+- **`windows/`** – Windows instance and tools installed
+- **`security/`** – IAM, MFA, cost control and instance shutdown practices
+- **`resources/`** – External tools and useful links
 
-2. **Connect**
-  - ssh -i "Myhomelapproject.pem" ubuntu@<public-ip>
-  - Install Packages
+---
 
-3. **Install Packages**
-  - sudo apt update && sudo apt upgrade -y
-  - sudo apt install apache2 git -y
+## 🗃️ Example VMs
 
-## 🪟 Windows VM Setup
-1. **Launch EC2 Instance**
-  - AMI: Windows Server 2022 Base
-  - Download .pem key
-2. **Get Administrator Password**
-  - Decrypt with your .pem file from EC2 Console
-3. **Connect Using RDP**
-  -Use Remote Desktop with:
-    makefile:
-      Username: Administrator
-      Password: <Decrypted Password>
+| VM Type        | Purpose                     | Tools Used                   |
+|----------------|-----------------------------|------------------------------|
+| Amazon Linux   | Base OS + SSH + Updates     | yum, MobaXterm               |
+| Ubuntu         | Pentest practice            | Hydra, Nmap                  |
+| Windows        | Visual tools + learning     | Wireshark, Nmap GUI          |
+
+---
+
+## ⚠️ Reminder
+
+If you're using the **AWS Free Tier**, be sure to:
+- Stop unused instances
+- Monitor your billing dashboard
+- Set up budget alerts
