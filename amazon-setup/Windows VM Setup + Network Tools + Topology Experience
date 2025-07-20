@@ -1,0 +1,82 @@
+:
+
+🪟 Windows VM Setup + Network Tools + Topology Experience
+✅ Launching Windows VM on AWS
+Go to your AWS EC2 Dashboard.
+
+Click Launch Instance.
+
+Under Amazon Machine Image (AMI):
+
+Search for Microsoft Windows Server 2022 Base or similar.
+
+Choose a t2.micro instance (eligible for Free Tier).
+
+Create or select a key pair (for RDP access).
+
+Configure Security Group:
+
+Allow RDP (port 3389) for your IP only (highly recommended).
+
+Launch the instance and download the RDP file.
+
+🔐 Accessing the VM
+Go to EC2 > Instances.
+
+Select your Windows instance → Connect > RDP client.
+
+Use the RDP file + decrypted password to log in.
+
+🛠️ Installing Tools on Windows VM
+1. Nmap
+Download from: https://nmap.org/download.html
+
+Choose the Windows Installer.
+
+Run as Administrator after install.
+
+2. Wireshark
+Download from: https://www.wireshark.org/download.html
+
+Install with Npcap for packet capturing.
+
+Launch Wireshark and filter traffic using basic filters like:
+
+http
+
+ip.addr == your.ip.here
+
+🌐 Network Topology Experience
+🔍 Basic Topology Test
+Create 2–3 EC2 instances (Linux + Windows) and place them in the same VPC and Subnet.
+
+Try pinging between machines using command prompt or PowerShell.
+
+Test port connectivity using:
+
+bash
+Copy
+Edit
+nmap -p 80,443 <other-instance-IP>
+🌍 HTTP Scanning
+On your Windows VM, open PowerShell or CMD.
+
+Run a basic scan with Nmap:
+
+bash
+Copy
+Edit
+nmap -sS -p 80,443 <target-ip>
+Optionally, install a small web server on one Linux VM to simulate a test environment.
+
+Use Wireshark to inspect HTTP traffic if allowed.
+
+🧠 Notes & Security Tips
+📌 Keep your security groups tight – allow only your IP to access the VM.
+
+🕐 Stop the instance when not in use to avoid wasting your free-tier hours.
+
+🔐 Set up Cost Alarms + MFA for your AWS account.
+
+💡 Consider using Windows Defender Firewall rules to test inbound/outbound traffic behavior.
+
