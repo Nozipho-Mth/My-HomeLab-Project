@@ -1,85 +1,56 @@
 🐧 Step-by-Step: Launching an Ubuntu EC2 Instance on AWS Free Tier
-🛠️ Prerequisites:
-You already have an AWS Free Tier account
-
-You're in the EC2 Dashboard
-
-Your key pair (e.g., .pem file) is downloaded and saved
-
-You've set up IAM users/roles, cost alarms, and basic security groups
+  🛠️ Prerequisites:
+        At this point you already have an AWS Free Tier account
+        You're in the EC2 Dashboard
+        Your key pair (e.g., .pem file) is downloaded and saved
+        You've set up IAM users/roles, cost alarms, and basic security groups
 
 🚀 Step 1: Launch a New EC2 Instance
-Go to EC2 Dashboard → click "Launch Instance"
-
-Name your instance (e.g., Ubuntu-VM)
-
-Under Amazon Machine Image (AMI):
-
-Select Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
-
-✅ Eligible for Free Tier
+    Go to EC2 Dashboard → click "Launch Instance"
+    Name your instance (e.g., Ubuntu-VM)
+    Under Amazon Machine Image (AMI):
+      -Select Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+      -Eligible for Free Tier
 
 💻 Step 2: Choose an Instance Type
-Choose t2.micro (free tier eligible)
-
-Click Next or Configure Instance
+    Choose t2.micro (free tier eligible)
+    Click Next or Configure Instance
 
 🔐 Step 3: Configure Key Pair
-Under Key pair, select your existing key (e.g., Myhomelabproject.pem)
-
-If not created, click “Create new key pair,” download and store it safely
+    Under Key pair, select your existing key (e.g., Myhomelabproject.pem)
+    If not created, click “Create new key pair,” download and store it safely
 
 🌐 Step 4: Configure Network Settings
-Create or select a Security Group:
-
-Allow:
-
-✅ SSH (port 22) — your IP only
-
-Optional: HTTP (80) or HTTPS (443) for web testing
+    Create or select a Security Group:
+    Allow:
+      -SSH (port 22) — your IP only
+      -Optional: HTTP (80) or HTTPS (443) for web testing
 
 💾 Step 5: Add Storage (Optional)
-Default: 8 GiB (general purpose SSD)
-
-Leave as is unless you need more space
+    Default: 8 GiB (general purpose SSD)
+    Leave as is unless you need more space
 
 ✅ Step 6: Review and Launch
-Review everything
-
-Click Launch Instance
+    Review everything
+    Click Launch Instance
 
 ⌛ Step 7: Wait and Connect
-Once it's running:
-
-Go to Instances
-
-Select your Ubuntu VM
-
-Copy the Public IPv4 DNS
+      -Once it's running:
+      -Go to Instances
+      -Select your Ubuntu VM
+      -Copy the Public IPv4 DNS
 
 🔗 Step 8: Connect via MobaXterm
 In MobaXterm:
 
-bash
-Copy
-Edit
 ssh -i "C:/Users/yourname/Downloads/Myhomelabproject.pem" ubuntu@<your-public-ip>
-Username for Ubuntu is ubuntu
-
-Accept the fingerprint
+    -Username for Ubuntu is ubuntu
+    -Accept the fingerprint
 
 You’re in! 🎉
 
 🛡️ Step 9: Update & Secure Ubuntu
 Once inside your VM, run:
-
-bash
-Copy
-Edit
-sudo apt update && sudo apt upgrade -y
+    -sudo apt update && sudo apt upgrade -y
 Optional tools you can install for practice:
-
-bash
-Copy
-Edit
-sudo apt install nmap hydra net-tools curl -y
+    -sudo apt install nmap hydra net-tools curl -y (I played a bit on hydra, I'll be share more details at a later stage during my learning journey) 
