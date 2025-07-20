@@ -1,0 +1,80 @@
+🐧 Step-by-Step: Setting Up an Amazon Linux EC2 Instance (AWS Free Tier)
+
+✅ 1. Login to AWS Console
+    -Go to https://aws.amazon.com/console
+    -Use IAM user credentials (NOT root) for better security
+    -MFA should already be enabled for login
+
+🖥️ 2. Launch an Amazon Linux EC2 Instance
+  Navigate to EC2
+    -Search for “EC2” in the AWS Console search bar
+
+  Click “Launch Instance”
+
+  Name your instance
+    -Example: AmazonLinux-HomeLab
+
+  Select Amazon Machine Image (AMI)
+    -Choose: Amazon Linux 2023 AMI
+
+  Instance type
+    -Choose t2.micro or t3.micro (Free Tier eligible)
+
+  Key pair (login)
+
+    -Select existing or create new key pair (download .pem file)
+
+  Network Settings
+
+    -Default VPC is fine for now
+    -Ensure SSH (port 22) is open only to your IP
+
+  Storage
+    -8 GB is default (Free Tier allows up to 30 GB total across instances)
+
+  Click Launch Instance
+
+🔐 3. Secure the Instance
+    -Restrict inbound traffic to specific IP (not 0.0.0.0/0)
+    -Enable automatic updates (via cron or yum if needed)
+    -Don't expose unnecessary ports
+
+🔑 4. Access the Instance (via MobaXterm or Terminal)
+    -Move the .pem file to a safe location
+    -Open MobaXterm
+    -Create a new SSH session:
+        Host: Public IPv4 from EC2 dashboard
+        Username: ec2-user
+        Use private key (.pem file)
+
+    -OR via terminal:
+          bash
+          chmod 400 your-key.pem
+          ssh -i your-key.pem ec2-user@your-ec2-public-ip
+
+🧰 5. Basic Setup Inside Amazon Linux
+Once connected:
+          bash
+          sudo yum update -y
+          sudo yum install git wget curl unzip -y
+
+| Action        | What Happens        | Cost Impact                           | Data Retained? 
+| ------------- | ------------------- | ------------------------------------- | -------------  
+| **Stop**      | Instance shuts down | May still incur EBS (storage) charges | ✅ Yes         
+| **Terminate** | Deletes instance    | ❌ No charges                         | ❌ No data     
+
+
+💡 Recommendation: Stop when done, but terminate if you won’t use it again.
+
+| Feature             | Limit           | Duration  |
+| ------------------- | --------------- | --------- |
+| EC2 (Linux/Windows) | 750 hours/month | 12 months |
+| EBS Storage         | 30 GB           | 12 months |
+
+
+Estimate: If you leave a t2.micro instance running 24/7, you’ll hit ~750 hours in a month.
+To avoid charges:
+
+  -Monitor using AWS Budgets
+  -Enable Billing alerts
+  -Stop unused instances
