@@ -45,3 +45,17 @@ If you're using the **AWS Free Tier**, be sure to:
 - Stop unused instances
 - Monitor your billing dashboard
 - Set up budget alerts
+
+## 🔧 Scripts
+
+We’ve included setup scripts to help replicate this lab environment faster.
+
+- `scripts/setup-linux.sh`: Updates packages and installs Apache, Hydra, Nmap (Amazon Linux or Ubuntu)
+- `scripts/setup-windows.ps1`: Installs Wireshark and Nmap via PowerShell/Chocolatey
+
+To use:
+
+```bash
+chmod +x scripts/setup-linux.sh
+./scripts/setup-linux.sh
+
