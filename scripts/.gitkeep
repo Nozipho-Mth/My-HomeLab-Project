@@ -1,1 +1,19 @@
 
+scripts/setup-linux.sh
+
+#!/bin/bash
+# Basic EC2 Linux Setup Script
+sudo yum update -y || sudo apt update -y
+sudo yum install -y httpd || sudo apt install -y apache2
+sudo apt install -y nmap hydra git curl
+#!/bin/bash
+
+
+scripts/setup-windows.ps1
+# Windows EC2 VM Setup
+Set-ExecutionPolicy Bypass -Scope Process -Force
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install nmap wireshark -y
+
+
+
