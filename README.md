@@ -59,3 +59,5 @@ To use:
 chmod +x scripts/setup-linux.sh
 ./scripts/setup-linux.sh
 
+📘 Full Blog Write-up on Medium:  
+🔗 [Building and Securing My First Cloud Homelab on AWS](https://medium.com/@noziphopmthimunye/building-and-securing-my-first-cloud-homelab-on-aws-linux-ubuntu-windows-eb825be7071c)
